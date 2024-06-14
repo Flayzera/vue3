@@ -1,6 +1,6 @@
 <template>
   <div class="is-flex is-align-items-center is-justify-content-space-between">
-    <stopwatch :timeInSeconds="timeInSeconds" />
+    <Stopwatch :timeInSeconds="timeInSeconds" />
     <button class="button" @click="start" :disabled="stopwatchRunning">
       <span class="icon">
         <i class="fas fa-play"></i>

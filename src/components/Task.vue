@@ -1,8 +1,11 @@
 <template>
   <Box>
     <div class="columns">
-      <div class="column is-7">
-        {{ task.description || 'Tarefa sem descrição' }}
+      <div class="column is-4">
+        {{ task.description || 'Task without description' }}
+      </div>
+      <div class="column is-3">
+        {{ task.project?.name || 'N/A' }}
       </div>
       <div class="column">
         <Stopwatch :timeInSeconds="task.durationInSeconds"/>
@@ -17,7 +20,7 @@ import { defineComponent, PropType } from 'vue'
 import Stopwatch from '@/components/Stopwatch.vue'
 import Box from '@/components/Box.vue'
 
-import ITarefa from '../interfaces/ITarefa'
+import ITarefa from '../interfaces/ITask'
 
 export default defineComponent({
   name: 'Task',

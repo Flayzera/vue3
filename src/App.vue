@@ -4,13 +4,8 @@
       <Sidebar @changedTheme="changeTheme" />
     </div>
     <div class="column is-three-quarter content">
-      <Form @savingTask="saveTask" />
-      <div class="lista">
-        <Task v-for="(task, index) in tasks" :key="index" :task="task" />
-        <Box v-if="tasks.length === 0">
-          Você não está muito produtivo hoje!
-        </Box>
-      </div>
+      <Notifications />
+     <router-view></router-view>
     </div>
   </main>
 </template>
@@ -18,29 +13,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+
 import Sidebar from '@/components/Sidebar.vue'
-import Form from '@/components/Form.vue'
-import Task from '@/components/Task.vue'
-import Box from '@/components/Box.vue'
-
-import ITarefa from './interfaces/ITarefa'
-
+import Notifications from '@/components/Notifications.vue'
 
 export default defineComponent({
   name: 'App',
 
   components: {
     Sidebar,
-    Form,
-    Task,
-    Box
+    Notifications
+    
   },
 
   methods: {
-    saveTask(task: ITarefa) {
-      this.tasks.push(task)
-    },
-
     changeTheme(darkModeActive: boolean) {
       this.darkModeActive = darkModeActive
     }
@@ -48,11 +34,11 @@ export default defineComponent({
 
   data() {
     return {
-      tasks: [] as ITarefa[],
       darkModeActive: false
     }
   }
 })
+
 </script>
 
 <style>
